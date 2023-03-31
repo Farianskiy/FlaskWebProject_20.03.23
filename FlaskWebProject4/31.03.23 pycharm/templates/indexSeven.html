@@ -1,0 +1,82 @@
+
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <h1>{{10/5}}</h1>
+    <h1>{{("c", "c++", "c#")[2]}}</h1>
+    <h2>
+        <h1><p>Условие</p></h1>
+
+        {% if user %}
+    {% if user.newbie %}
+        <p>Display newbie stages</p>
+    {% elif user.pro %}
+        <p>Display pro stages</p>
+    {% elif user.ninja %}
+        <p>Display ninja stages</p>
+    {% else %}
+        <p>You have completed all states</p>
+    {% endif %}
+{% else %}
+    <p>User is not defined</p>
+{% endif %}
+    </h2>
+    <h2>
+        <h1><p>Цикл</p></h1>
+
+        {% set employee = { 'name': 'tom', 'age': 25, 'designation': 'Manager' } %}
+
+        <ul>
+            {% for key, value in employee.items() %}
+        <li>{{ key }} : {{ value }}</li>
+            {% endfor %}
+        </ul>
+    </h2>
+    <h2>
+        <h1><p>Присваивание</p></h1>
+
+        {% set fruit = 'apple' %}
+        <p>{{fruit}}</p>
+    </h2>
+    <h2>
+        <h1><p>Лист</p></h1>
+
+        {% set user_list = [] %}
+
+        <ul>
+            {% for user in user_list %}
+            <li>{{ user }}</li>
+            {% else %}
+            <li>user_list is empty</li>
+            {% endfor %}
+        </ul>
+    </h2>
+
+    <h2>
+        <h1><p>Макросы</p></h1>
+
+        {% macro custom_renderer(para) %}
+    <p>{{ para }}</p>
+    <p>varargs: {{ varargs }}</p>
+    <p>kwargs: {{ kwargs }}</p>
+{%  endmacro  %}
+
+{{ custom_renderer("some content", "apple", name='spike', age=15) }}
+    </h2>
+
+    <h2>
+        <h1><p>Экранирование</p></h1>
+
+        {% set html = "Escaping in Jinja" %}
+        {{ html|safe }}
+    </h2>
+
+    <h2>
+        <h1><p>Вложенные</p></h1>
+
+        {% include 'nav.html' %}
+    </h2>
+</body>
+</html>
